@@ -2,7 +2,7 @@ const Main = ({ dat, i}) => {
 
     return ( 
         <main>
-            <div className="cont" key={i}>
+            <div className="cont">
             <img src={dat.Poster} alt="ok" />
             <h2>{dat.Title}</h2>
             <div className="texts">

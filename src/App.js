@@ -9,9 +9,21 @@ import Navbar from './components/Navbar';
 
 
 function App() {
-  const [search, setSearch] = useState();
-  const [item, setItem] = useState([]);
-  const ApiKey = '2150fd9b'
+  const [search, setSearch] = useState('');
+  const [items, setItems] = useState('');
+  const ApiKey = '2150fd9b';
+  
+  const handleOnchange = (event) => {
+    setSearch(event.target.value);
+  }
+
+  const fetchData = async (search) => {
+    const result = await axios.get(`https://www.omdbapi.com/?s=${search}&page=7&apikey=${ApiKey}`);
+    const dataSearch = result.data.Search;
+    setItems(dataSearch)
+    
+  };
+  // console.log(item);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,14 +31,8 @@ function App() {
     
   }
  
-  const fetchData = async (search) => {
-    const result = await axios.get(`https://www.omdbapi.com/?s=${search}&page=7&apikey=${ApiKey}`);
-    setItem(result.data.Search)
-  };
 
-  const handleOnchange = (event) => {
-    setSearch(event.target.value);
-  }
+  
 
  
 
@@ -38,7 +44,7 @@ function App() {
             handleSubmit={handleSubmit}
             />
             <div className='div'>
-            {item.length > 0 ? item.map((dat, i) => <Main dat={dat} i={i} /> ) : 'Search for Movies'}
+            {items.length > 0 ? items.map((dat, i) => <Main dat={dat} key={i} /> ) : 'Search for Movies'}
             </div>
     </div>
   );

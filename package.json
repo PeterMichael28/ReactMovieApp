@@ -1,6 +1,6 @@
 {
-  "name": "react-app",
-  "homepage": "http://PeterMichael28.github.io/react-app",
+  "name": "ReactMovieApp",
+  "homepage": "http://PeterMichael28.github.io/ReactMovieApp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
